@@ -5,7 +5,7 @@ from src.validation_schemas import AliasSchema, UserEventsSchema, ProfileSchema
 
 
 app = Flask(__name__)
-firehose = boto3.client('firehose')
+firehose = boto3.client('firehose', region_name="us-east-1", aws_access_key_id='***REMOVED***', aws_secret_access_key='***REMOVED***')
 BUCKET = '***REMOVED***'
 
 alias_schema = AliasSchema()
@@ -14,6 +14,12 @@ profile_schema = ProfileSchema()
 
 
 def put_firehose_record(validation_schema, delivery_stream_name: str):
+    """
+    Receives a post-request with a json, validates fields and sends its content to AWS Kinesis Firehose
+    :param validation_schema: marshmallow schema for fields validation. Can be imported from src.validation_schemas
+    :param delivery_stream_name: name of AWS Kinesis Firehose delivery stream
+    :return: response with 200- or 400-status.
+    """
     content = request.get_json()
     dumped_content = json.dumps(content)
     loaded_content = json.loads(dumped_content)
@@ -33,18 +39,30 @@ def put_firehose_record(validation_schema, delivery_stream_name: str):
 
 @app.route('/track', methods=['POST'])
 def log_user_events():
+    """
+    Receive a json on the /track endpoint, validate its fields and put a record to AWS Kinesis Firehose
+    :return: response with 200- or 400-status.
+    """
     response = put_firehose_record(validation_schema=user_events_schema, delivery_stream_name='log_user_events')
     return response
 
 
 @app.route('/profile', methods=['POST'])
 def create_user_profile():
+    """
+    Receive a json on the /profile endpoint, validate its fields and put a record to AWS Kinesis Firehose
+    :return: response with 200- or 400-status.
+    """
     response = put_firehose_record(validation_schema=profile_schema, delivery_stream_name='user_profiles')
     return response
 
 
 @app.route('/alias', methods=['POST'])
 def link_users():
+    """
+    Receive a json on the /alias endpoint, validate its fields and put a record to AWS Kinesis Firehose
+    :return: response with 200- or 400-status.
+    """
     response = put_firehose_record(validation_schema=alias_schema, delivery_stream_name='link_users')
     return response
 

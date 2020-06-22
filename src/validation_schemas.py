@@ -26,7 +26,7 @@ class UserEvents:
 
 class UserEventsSchema(Schema):
     userId = fields.Str(required=True)
-    events = fields.List(fields.Nested(EventSchema))
+    events = fields.List(fields.Nested(EventSchema), required = True)
     @post_load
     def create_object(self, data, **kwargs):
         return UserEvents(**data)
