@@ -26,7 +26,7 @@ The application is running in a docker container.
 4. **docker-compose.yml** - docker-compose file
 5. **Dockerfile** - docker file
 
-## Prerequisits:
+## Prerequisites:
 1. An environment with permissions to access AWS Firehose. If you're using an EC2 instance, you can create an AMI role and attach it to the instance. The required policies are: AmazonS3FullAccess,  AmazonKinesisFirehoseFullAccess.
 2. docker, docker-compose, AWS CLI installed.
 3. AWS S3 bucket created.Default name = "***REMOVED***", can be changed in main.py
