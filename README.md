@@ -34,7 +34,8 @@ The application is running in a docker container.
 
 ## Execution instructions
 Execute the following commands to start a docker-container. The application will start automatically on 0.0.0.0:5000:
-```docker-compose build
+```
+docker-compose build
 docker-compose up
 ```
 ## Tests instructions
