@@ -1,4 +1,4 @@
-# scalable HTTP api that writes raw data to a data lake in AWS S3 using AWS Kinesis Firehose
+# HTTP api that writes raw data to a data lake in AWS S3 using AWS Kinesis Firehose
 
 ## Architecture
 This portion of the architecture allows for a client to collect their users data in a cost-effective way that does not require sharing the data with or locking yourself into a 3rd party.
