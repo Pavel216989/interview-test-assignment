@@ -21,7 +21,7 @@ The application is running in a docker container.
 
 ## Code architecture
 1. **main.py** - the main application logic. Creates a flask api with the required end-points and the logic for post-requests processing.
-2. **src/vdalidation_schemas.py** - marshmallow schemas for post-requests structure validation.
+2. **src/validation_schemas.py** - marshmallow schemas for post-requests structure validation.
 3. **test.py** - tests. Sends post-requests with a set of jsons that need to return a status code. Validates whether the status code is correct.
 4. **docker-compose.yml** - docker-compose file
 5. **Dockerfile** - docker file
