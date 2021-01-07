@@ -10,7 +10,7 @@ from src.validation_schemas import AliasSchema, UserEventsSchema, ProfileSchema
 
 app = Flask(__name__)
 firehose = boto3.client('firehose', region_name="us-east-1")
-BUCKET = '***REMOVED***'
+BUCKET = 'user.logs.daredata'
 
 alias_schema = AliasSchema()
 user_events_schema = UserEventsSchema()

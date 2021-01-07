@@ -1,7 +1,7 @@
 # HTTP api that writes raw data to a data lake in AWS S3 using AWS Kinesis Firehose
 
 ## Architecture
-This portion of the architecture allows for a client to collect their users data in a cost-effective way that does not require sharing the data with or locking yourself into a 3rd party.
+A part of a system architecture that allows clients to cost-effectively collect their user-data.
 
 The HTTP server was build in Flask and uses marshmallow schemas for post-requests validation.
 The application is running in a docker container. 
@@ -29,7 +29,7 @@ The application is running in a docker container.
 ## Prerequisites:
 1. An environment with permissions to access AWS Firehose. If you're using an EC2 instance, you can create an AMI role and attach it to the instance. The required policies are: AmazonS3FullAccess,  AmazonKinesisFirehoseFullAccess.
 2. docker, docker-compose, AWS CLI installed.
-3. AWS S3 bucket created.Default name = "***REMOVED***", can be changed in main.py
+3. AWS S3 bucket created.Default name = "user.logs.daredata", can be changed in main.py
 4. AWS Firehose delivery streams to the S3 bucker described above with an AMI role that has access to S3 created. Default names are: "log_user_events", "link_users", "user_profiles". They can be changed in the main.py
 
 ## Execution instructions
